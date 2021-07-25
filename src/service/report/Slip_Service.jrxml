@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="500" pageHeight="842" columnWidth="460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed44dbc1-e3dc-49ec-aa8a-e37bf38d41cb">
+	<property name="ireport.zoom" value="1.3660269107301413"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="no_service" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tanggal_service" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nama_pelanggan" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="telpon" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nama_barang" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="jenis_barang" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="kerusakan" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     tb_service_A.`id_service` AS tb_service_A_id_service,
+     tb_service_A.`id_customer` AS tb_service_A_id_customer,
+     tb_service_A.`id_user` AS tb_service_A_id_user,
+     tb_service_A.`nama_barang` AS tb_service_A_nama_barang,
+     tb_service_A.`kerusakan` AS tb_service_A_kerusakan,
+     tb_service_A.`jenis_barang` AS tb_service_A_jenis_barang,
+     tb_service_A.`tgl_service` AS tb_service_A_tgl_service,
+     tb_service_A.`tgl_selesai` AS tb_service_A_tgl_selesai,
+     tb_service_A.`sparepart` AS tb_service_A_sparepart,
+     tb_service_A.`harga_sparepart` AS tb_service_A_harga_sparepart,
+     tb_service_A.`harga_service` AS tb_service_A_harga_service,
+     tb_service_A.`total_harga` AS tb_service_A_total_harga,
+     tb_service_A.`total_bayar` AS tb_service_A_total_bayar,
+     tb_service_A.`total_kembalian` AS tb_service_A_total_kembalian,
+     tb_service_A.`tgl_ambil` AS tb_service_A_tgl_ambil,
+     tb_service_A.`status` AS tb_service_A_status,
+     tb_customer.`id_customer` AS tb_customer_id_customer,
+     tb_customer.`nama_customer` AS tb_customer_nama_customer,
+     tb_customer.`alamat` AS tb_customer_alamat,
+     tb_customer.`no_hp` AS tb_customer_no_hp,
+     tb_user.`id_user` AS tb_user_id_user,
+     tb_user.`nama_user` AS tb_user_nama_user,
+     tb_user.`username` AS tb_user_username,
+     tb_user.`password` AS tb_user_password,
+     tb_user.`no_telp` AS tb_user_no_telp,
+     tb_user.`role` AS tb_user_role
+FROM
+     `tb_customer` tb_customer INNER JOIN `tb_service` tb_service_A ON tb_customer.`id_customer` = tb_service_A.`id_customer`
+     INNER JOIN `tb_user` tb_user ON tb_service_A.`id_user` = tb_user.`id_user`]]>
+	</queryString>
+	<field name="id_customer" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_customer" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_hp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_service" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_user" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_barang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kerusakan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jenis_barang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_service" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_selesai" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sparepart" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga_sparepart" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="harga_service" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_harga" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_bayar" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_kembalian" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_ambil" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_user" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="username" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="password" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_telp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="role" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tb_service_A_id_service" class="java.lang.Integer"/>
+	<field name="tb_service_A_id_customer" class="java.lang.Integer"/>
+	<field name="tb_service_A_id_user" class="java.lang.Integer"/>
+	<field name="tb_service_A_nama_barang" class="java.lang.String"/>
+	<field name="tb_service_A_kerusakan" class="java.lang.String"/>
+	<field name="tb_service_A_jenis_barang" class="java.lang.String"/>
+	<field name="tb_service_A_tgl_service" class="java.sql.Date"/>
+	<field name="tb_service_A_tgl_selesai" class="java.sql.Date"/>
+	<field name="tb_service_A_sparepart" class="java.lang.String"/>
+	<field name="tb_service_A_harga_sparepart" class="java.lang.Integer"/>
+	<field name="tb_service_A_harga_service" class="java.lang.Integer"/>
+	<field name="tb_service_A_total_harga" class="java.lang.Integer"/>
+	<field name="tb_service_A_total_bayar" class="java.lang.Integer"/>
+	<field name="tb_service_A_total_kembalian" class="java.lang.Integer"/>
+	<field name="tb_service_A_tgl_ambil" class="java.sql.Date"/>
+	<field name="tb_service_A_status" class="java.lang.String"/>
+	<field name="tb_customer_id_customer" class="java.lang.Integer"/>
+	<field name="tb_customer_nama_customer" class="java.lang.String"/>
+	<field name="tb_customer_alamat" class="java.lang.String"/>
+	<field name="tb_customer_no_hp" class="java.lang.String"/>
+	<field name="tb_user_id_user" class="java.lang.Integer"/>
+	<field name="tb_user_nama_user" class="java.lang.String"/>
+	<field name="tb_user_username" class="java.lang.String"/>
+	<field name="tb_user_password" class="java.lang.String"/>
+	<field name="tb_user_no_telp" class="java.lang.String"/>
+	<field name="tb_user_role" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<image>
+				<reportElement uuid="bd79ceb7-7fe1-457f-876b-3a0e967c1a88" x="-8" y="0" width="243" height="63"/>
+				<imageExpression><![CDATA["C:\\Laporan_Swirty\\logo_cetak.JPG"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="bd79ceb7-7fe1-457f-876b-3a0e967c1a88" x="235" y="0" width="237" height="63"/>
+				<imageExpression><![CDATA["C:\\Laporan_Swirty\\logo_cetak.JPG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="109" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9d038c19-3520-415c-a306-2048e9b6c543" style="Column header" x="0" y="0" width="67" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  No Service]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f5b020cf-0504-4eab-8222-dbca6baef95b" style="Column header" x="0" y="11" width="67" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Tanggal Service]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33bda916-43fc-40b1-9fb0-a2f30f1e82e6" style="Column header" x="0" y="22" width="67" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Nama Pelanggan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3d2f0df4-4abb-4e2c-92e5-761c2656584b" style="Column header" x="0" y="33" width="67" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Telpon]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e4827567-60a3-4652-a287-fa96efa96c9b" style="Detail" x="67" y="0" width="158" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{no_service}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="33538ba2-49f2-4718-a76a-0a124d4da77f" style="Detail" x="67" y="11" width="158" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{tanggal_service}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="057a3d35-c516-4375-aa88-af2b4cbc5e7c" style="Detail" x="67" y="22" width="158" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{nama_pelanggan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="db5743f8-9a68-49d8-aa11-a29f69a63417" style="Detail" x="67" y="33" width="158" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{telpon}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0265a5b2-f99f-4940-a036-249e6e9922b6" style="Column header" mode="Transparent" x="0" y="66" width="67" height="11" forecolor="#000000" backcolor="#FFFFCC"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Kerusakan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="99b61da3-5ae5-4682-ad55-9567d1da4df8" style="Column header" mode="Transparent" x="0" y="44" width="67" height="11" forecolor="#000000" backcolor="#FFFFCC"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Nama Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7f07406c-b6e5-4e06-afa0-bcf6343a25f3" style="Column header" mode="Transparent" x="0" y="55" width="67" height="11" forecolor="#000000" backcolor="#FFFFCC"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Jenis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f5b020cf-0504-4eab-8222-dbca6baef95b" style="Column header" x="244" y="11" width="57" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Tanggal Service]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3d2f0df4-4abb-4e2c-92e5-761c2656584b" style="Column header" x="244" y="33" width="57" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Telpon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d038c19-3520-415c-a306-2048e9b6c543" style="Column header" x="244" y="0" width="57" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  No Service]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33bda916-43fc-40b1-9fb0-a2f30f1e82e6" style="Column header" x="244" y="22" width="57" height="11" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Nama Pelanggan]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="33538ba2-49f2-4718-a76a-0a124d4da77f" style="Detail" x="301" y="11" width="159" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{tanggal_service}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e4827567-60a3-4652-a287-fa96efa96c9b" style="Detail" x="301" y="0" width="159" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{no_service}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="057a3d35-c516-4375-aa88-af2b4cbc5e7c" style="Detail" x="301" y="22" width="159" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{nama_pelanggan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="db5743f8-9a68-49d8-aa11-a29f69a63417" style="Detail" x="301" y="33" width="159" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{telpon}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="18fdc34b-4a21-49b0-9566-283eeb51fc3c" style="Detail" x="67" y="44" width="158" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="207dfced-be4e-4ea4-b0e3-f67d43896156" style="Detail" x="67" y="55" width="158" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{jenis_barang}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="bf70fead-e0f4-4f96-8b1e-50c08bc2b040" style="Detail" x="67" y="66" width="158" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{kerusakan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7f07406c-b6e5-4e06-afa0-bcf6343a25f3" style="Column header" mode="Transparent" x="244" y="55" width="57" height="11" forecolor="#000000" backcolor="#FFFFCC"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Jenis]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="bf70fead-e0f4-4f96-8b1e-50c08bc2b040" style="Detail" x="301" y="66" width="159" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{kerusakan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="99b61da3-5ae5-4682-ad55-9567d1da4df8" style="Column header" mode="Transparent" x="244" y="44" width="57" height="11" forecolor="#000000" backcolor="#FFFFCC"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Nama Barang]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="18fdc34b-4a21-49b0-9566-283eeb51fc3c" style="Detail" x="301" y="44" width="159" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="207dfced-be4e-4ea4-b0e3-f67d43896156" style="Detail" x="301" y="55" width="159" height="11"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$P{jenis_barang}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0265a5b2-f99f-4940-a036-249e6e9922b6" style="Column header" mode="Transparent" x="244" y="66" width="57" height="11" forecolor="#000000" backcolor="#FFFFCC"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  Kerusakan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1b84c627-7316-475d-9885-1600090a12aa" x="244" y="77" width="216" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Serif" size="8" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[  **) Arsip Swirty]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="11" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="31" splitType="Stretch"/>
+	</summary>
+</jasperReport>
